@@ -1,0 +1,52 @@
+import type { Task } from "./types";
+
+export const SAMPLE_TASKS: Task[] = [
+  {
+    id: 't1',
+    title: 'Research content ideas',
+    list: 'Today',
+    tags: [],
+    due: null,
+    subtasks: [],
+    description: 'Collect 5 blog post ideas for next month.',
+  },
+  {
+    id: 't2',
+    title: 'Create a database of guest authors',
+    list: 'Today',
+    tags: ['Work'],
+    due: null,
+    subtasks: [],
+    description: "Start with a CSV export from last year's contributors.",
+  },
+  {
+    id: 't3',
+    title: "Renew driver's license",
+    list: 'Today',
+    tags: ['Personal'],
+    due: '2022-03-22',
+    subtasks: [
+      { id: 's1', text: 'Print forms', done: false },
+      { id: 's2', text: 'Visit RTO', done: false },
+    ],
+    description: 'Need new photo and documents.',
+  },
+  {
+    id: 't4',
+    title: 'Consult accountant',
+    list: 'Upcoming',
+    tags: ['Work'],
+    due: '2022-04-01',
+    subtasks: [],
+    description: 'Quarterly taxes and expenses review.',
+  },
+  {
+    id: 't5',
+    title: 'Print business card',
+    list: 'Upcoming',
+    tags: [],
+    due: null,
+    subtasks: [],
+    description: 'Finalize logo and contact details.',
+  },
+];
