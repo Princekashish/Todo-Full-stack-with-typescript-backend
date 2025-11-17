@@ -1,5 +1,5 @@
 // src/components/TaskList.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import type { Task } from '../types';
 import type { Dispatch, SetStateAction } from 'react';
 import { ChevronRight } from 'lucide-react';
@@ -11,11 +11,26 @@ type Props = {
 };
 
 const TaskList: React.FC<Props> = ({ tasks = [], onOpenTask, selectedNav = '' }) => {
+    const [input, setInput] = useState("")
+    const [todolist, setTodolist] = useState(tasks);
+    const add = () => {
+        const newTask: Task = {
+            id: "1",
+            title: input,
+            list: "Today"
+        }
+        setTodolist([...tasks, newTask])
+        setInput(" ")
+    }
+
+console.log(todolist);
+
+
     return (
         <div className="flex-1 px-8 py-8">
             <div className="flex items-center gap-4">
                 <h1 className="text-4xl font-extrabold">{selectedNav}</h1>
-                <div className="px-3 py-1 border rounded-md text-gray-600">{tasks.length}</div>
+                <div className="px-3 py-1 border rounded-md text-gray-600">{todolist.length}</div>
             </div>
 
             <div className="mt-6">
@@ -25,9 +40,15 @@ const TaskList: React.FC<Props> = ({ tasks = [], onOpenTask, selectedNav = '' })
                             +
                         </button>
                         <input
-                            className="flex-1 px-3 py-2 text-sm"
+                            value={input}
+                            onChange={(e) => setInput(e.target.value)}
+                            className="flex-1 px-3 py-2 text-sm outline-none"
                             placeholder="Add New Task"
                             aria-label="Add new task"
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter")
+                                    add()
+                            }}
                         />
                     </div>
 
@@ -63,7 +84,7 @@ const TaskList: React.FC<Props> = ({ tasks = [], onOpenTask, selectedNav = '' })
                                 </div>
 
                                 <div className="text-gray-400 flex ">
-                                    <ChevronRight color='black'/>
+                                    <ChevronRight color='black' />
                                 </div>
                             </li>
                         ))}

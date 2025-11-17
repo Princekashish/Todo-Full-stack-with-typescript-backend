@@ -49,4 +49,13 @@ export const SAMPLE_TASKS: Task[] = [
     subtasks: [],
     description: 'Finalize logo and contact details.',
   },
+  {
+    id: 't8',
+    title: 'Print business card',
+    list: 'Archive',
+    tags: [],
+    due: null,
+    subtasks: [],
+    description: 'Finalize logo and contact details.',
+  },
 ];
